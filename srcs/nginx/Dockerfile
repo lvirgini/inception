@@ -1,0 +1,61 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/06/08 12:18:40 by lvirgini          #+#    #+#              #
+#    Updated: 2021/06/14 14:30:56 by lvirgini         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# PORT 443
+# lien avec DOCKER wordpress/php port 9000
+# lien avec VOLUME wordpress
+# -------------------------------------------#
+
+#  docker build -t inception_nginx .
+#  docker run -ti -p 443:443 inception_nginx bash
+
+FROM debian:buster
+
+
+# -----------------
+#	Installation
+# -----------------
+
+RUN 	apt-get -y update && \
+		apt-get -y upgrade && \
+		apt-get -y install nginx-light openssl
+
+
+# -----------------
+#	Configuration
+# -----------------
+
+# NGINX:
+
+COPY	requirements/ tmp/
+RUN 	rm /etc/nginx/nginx.conf etc/nginx/sites-available/default 	&& \
+		mv /tmp/nginx.conf etc/nginx/ 								&& \
+		mv /tmp/default etc/nginx/sites-available/
+
+
+# CERTIFICAT SSL:
+
+RUN 	openssl req -x509 -nodes -days 1 -newkey rsa:2048 			\
+		-keyout etc/ssl/private/inception_key.pem					\
+		-out etc/ssl/certs/inception_cert.pem 						\
+		-subj "/C=FR/ST=FRANCE/L=PARIS/O=INCEPTION/CN=127.0.0.1"  	&& \
+		openssl dhparam -out /etc/nginx/dhparam.pem 2048
+
+
+# -----------------
+#	Initialisation
+# -----------------
+
+RUN		service nginx restart
+
+EXPOSE	443
+

@@ -1,0 +1,23 @@
+# etc/nginx/sites-available/default 
+
+server {   
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+
+		ssl on;
+		ssl_certificate 	/etc/ssl/certs/inception_cert.pem;
+		ssl_certificate_key /etc/ssl/private/inception_key.pem;
+		ssl_dhparam 		/etc/nginx/dhparam.pem;
+
+		server_name localhost 127.0.0.1;
+
+		autoindex on;
+       
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
