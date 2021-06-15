@@ -6,9 +6,12 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 11:17:08 by lvirgini          #+#    #+#              #
-#    Updated: 2021/06/14 14:33:42 by lvirgini         ###   ########.fr        #
+#    Updated: 2021/06/15 14:22:13 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+DIR=--project-directory srcs/
+ENV_FILE=--env-file srcs/.env
 
 # ----------------- #
 #	  FUNCTIONS		#
@@ -17,11 +20,11 @@
 all:	build run
 
 build:	
-		docker-compose --env-file .env build
+		docker-compose $(DIR) $(ENV_FILE) build 
 		@echo "\n\033[36;1m\033[4;5mDOCKER BUILD : DONE\033[0m\n"
 
 run:
-		docker-compose up
+		docker-compose $(DIR) $(ENV_FILE) up -d
 
 bonus: 	all
 
@@ -30,20 +33,15 @@ bonus: 	all
 # 		CLEAN		#
 # ----------------- #
 
-clean:	down
+stop:
+		docker-compose $(DIR) down
 
-down: 
-		docker-compose down
-
-stop: 
-		docker stop $$(docker ps -a -q)
-
-rm:		stop
+rm:
 		docker rm $$(docker ps -a -q)
 
 rmi:
 		docker rmi -f $$(docker images -a -q)
 
-re: 	down all
+re: 	stop all
 
-.PHONY: all clean flcean re rmi rm down run build
+.PHONY: all build run bonus stop rm rmi re

@@ -1,0 +1,37 @@
+# CTRL MAJ P  
+
+#services = 1 container:
+        #port:
+            #-HOST:CONTAINER
+#
+
+services:
+    nginx:
+        container_name: nginx
+        build: ./nginx/
+        env_file: 
+            - .env
+        ports:
+            - 443:443
+        restart: always
+
+    wordpress:
+        container_name: wordpress
+        build: ./wordpress/
+        restart: always
+        env_file: 
+            - .env
+        
+
+    mariadb:
+        container_name: mariadb
+        build: ./mariadb
+        restart: always
+        env_file:
+            - .env
+
+
+
+volumes:
+    wordpress_db:
+        
