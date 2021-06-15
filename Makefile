@@ -6,9 +6,13 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 11:17:08 by lvirgini          #+#    #+#              #
-#    Updated: 2021/06/15 14:22:13 by lvirgini         ###   ########.fr        #
+#    Updated: 2021/06/15 14:31:12 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# ----------------- #
+#	  VARIABLES		#
+# ----------------- #
 
 DIR=--project-directory srcs/
 ENV_FILE=--env-file srcs/.env
