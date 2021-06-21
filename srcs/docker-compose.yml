@@ -3,7 +3,8 @@
 #services = 1 container:
         #port:
             #-HOST:CONTAINER
-#
+# docker-compose config : pour détailler la config
+version: "3"
 
 services:
     nginx:
@@ -13,19 +14,21 @@ services:
         ports:
             - 443:443
         restart: always
-
+            
     wordpress:
         container_name: wordpress
         build: ./wordpress/
         restart: always
         env_file: .env
         
-
+        
     mariadb:
         container_name: mariadb
         build: ./mariadb
         restart: always
         env_file: .env
+        environment: 
+            - TEST=test
 
 
 
