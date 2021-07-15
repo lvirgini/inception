@@ -55,7 +55,7 @@ RUN 	openssl req -x509 -nodes -days 1 -newkey rsa:2048 			\
 #	Initialisation
 # -----------------
 
-RUN		service nginx restart
+CMD	["nginx", "-g", "daemon off"]
 
 EXPOSE	443
 
