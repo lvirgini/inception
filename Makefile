@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 11:17:08 by lvirgini          #+#    #+#              #
-#    Updated: 2021/06/15 14:31:12 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/01 16:31:19 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,12 @@
 #	  VARIABLES		#
 # ----------------- #
 
-DIR=--project-directory srcs/
-ENV_FILE=--env-file srcs/.env
+DIR		= srcs/
+NAME	= docker-compose.yml
+
+DOCKER_COMPOSE = $(DIR)$(NAME)
+
+ENV_FILE =--env-file srcs/.env
 
 # ----------------- #
 #	  FUNCTIONS		#
@@ -24,11 +28,11 @@ ENV_FILE=--env-file srcs/.env
 all:	build run
 
 build:	
-		docker-compose $(DIR) $(ENV_FILE) build 
+		docker-compose -f $(DOCKER_COMPOSE) build 
 		@echo "\n\033[36;1m\033[4;5mDOCKER BUILD : DONE\033[0m\n"
 
 run:
-		docker-compose $(DIR) $(ENV_FILE) up -d
+		docker-compose -f $(DOCKER_COMPOSE) up -d
 
 bonus: 	all
 
@@ -38,7 +42,7 @@ bonus: 	all
 # ----------------- #
 
 stop:
-		docker-compose $(DIR) down
+		docker-compose -f $(DOCKER_COMPOSE) down
 
 rm:
 		docker rm $$(docker ps -a -q)
