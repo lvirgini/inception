@@ -1,38 +1,63 @@
-# CTRL MAJ P  
 
 #services = 1 container:
         #port:
             #-HOST:CONTAINER
 
 # docker-compose config : pour détailler la config
+
+# version : specify the version of docker-compose. old version don't have some options.
 version: "3"
 
+# VOLUME
+#   driver: specify local volume
+#   drivers_opts: option for mount volume (man mount)
+#       o: bind : lier/monter le volume d'un repertoire deja existant
+#       device = absolute_path of volume
+
+volumes:
+    fuck:
+        driver: local
+        driver_opts:
+            o: bind
+            type: volume
+            device: /home/user42/42/inception/srcs/html
+
+
+# list of all services : 
 services:
+
+
     nginx:
         container_name: nginx
-        build: ./nginx/
+        build: ./requirements/nginx/
         env_file: .env
         ports:
             - 443:443
-        restart: always
+        restart: on-failure
+        volumes:
+            - fuck:/var/www/html
+    
+    
+    # - ./html:/var/www/html
+     # - ./volume_test:/var/www/html
+        # test: echo $TEST
             
-    wordpress:
-        container_name: wordpress
-        build: ./wordpress/
-        restart: always
-        env_file: .env
+    # wordpress:
+    #     container_name: wordpress
+    #     build: ./wordpress/
+    #     restart: on-failure
+    #     env_file: .env
         
         
-    mariadb:
-        container_name: mariadb
-        build: ./mariadb
-        restart: always
-        env_file: .env
-        environment: 
-            - TEST=test
+    # mariadb:
+    #     container_name: mariadb
+    #     build: ./mariadb
+    #     restart: on-failure
+    #     env_file: .env
+    #     environment: 
+    #         - TEST=test
 
 
 
-volumes:
-    wordpress_db:
+    # wordpress_db:
         

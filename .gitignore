@@ -1,1 +1,3 @@
 srcs/*/default/
+.vscode
+ft_server/

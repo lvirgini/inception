@@ -9,9 +9,25 @@
     > fleche
 ***
 ## Docker
-* FLAGS
-* COMMANDS
+https://docs.docker.com/engine/reference/commandline/docker/
+* COMMANDS & FLAG
+    * special for docker run :
+        * `-i` : interactive mode
+       * `-d` : run docker in detached mode (background)
+       * `-p 80:80` : map port 80 of the host to port 80 in the container
+    * ` docker build [OPTIONS] PATH | URL | `
+        * `-f [PATH]` : -f flag specify the path to a specific docker (Default is 'PATH/Dockerfile')
+        * `--add-host` : Add a custom host-to-IP mapping (host:ip)
+        * `--no-cache` : Do not use cache when building the image
+    * `docker history [IMAGE]` : show history of an image
+    * `docker image`
+        * `docker image inspect [IMAGE]` : Display detailed information on one or more images
+        * `docker image prune` : remove unused image
+    * `docker images` : list of image 
+        * `-a` list all images (including intermediate)
     * `docker inspect [id or tag]`
+    * `docker port [id]` list port
+
 * DOCKER FILE
 
 ***
@@ -73,3 +89,16 @@ https://docs.docker.com/compose/compose-file/compose-file-v3/
 * `environment:` add environment variables.
 * `expose:` expose ports
 * `test: ["CMD", "CMD2"]` :
+
+
+## docker network
+Docker networking allows you to atach a container to as many networks as you like : we can also attach an already running container.
+    * `network bridge` : default network driver : 
+        * communication between containers
+
+## docker volume
+Volume for persisting data. A volume does not increase the size of the containers using it, and the volume’s contents exist outside the lifecycle of a given container.
+* `-v path_src:path_dst`
+* `docker volume create [NAME]` : create a volume
+* `docker volume ls` : list volume
+* `docker volume inspect [NAME]` : inspect volume. 
