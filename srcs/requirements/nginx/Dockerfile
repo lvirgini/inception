@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:18:40 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/05 12:27:45 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/09 14:26:40 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,6 @@ RUN 	apt-get -y update && \
 #	Configuration
 # -----------------
 
-# NGINX:
-#	remove default nginx.conf and copy my nginx.conf
-
-COPY	conf/ tmp/
-RUN 	rm /etc/nginx/nginx.conf etc/nginx/sites-available/default 	&& \
-		mv /tmp/nginx.conf etc/nginx/ 								&& \
-		mv /tmp/default etc/nginx/sites-available/
 
 
 # CERTIFICAT SSL:
@@ -52,6 +45,19 @@ RUN 	openssl req -x509 -nodes -days 1 -newkey rsa:2048 			\
 		-out etc/ssl/certs/inception_cert.pem 						\
 		-subj "/C=FR/ST=FRANCE/L=PARIS/O=INCEPTION/CN=127.0.0.1"  	&& \
 		openssl dhparam -out /etc/nginx/dhparam.pem 1024
+
+# NGINX:
+#	remove default nginx.conf and copy my nginx.conf
+
+COPY	conf/ tmp/
+RUN 	rm /etc/nginx/nginx.conf etc/nginx/sites-available/default 	&& \
+		mv /tmp/nginx.conf etc/nginx/ 								&& \
+		mv /tmp/default etc/nginx/sites-available/
+	
+# RUN		echo "127.0.0.1 $DOMAIN_NAME" >> /etc/hosts
+# RUN		echo "127.0.0.1 www.$DOMAIN_NAME" >> /etc/hosts
+# RUN		echo "127.0.0.1 test.test" >> /etc/hosts
+# RUN		echo "127.0.0.1 www.test.test" >> /etc/hosts
 
 # restart nginx for update configuration
 RUN 	service nginx restart

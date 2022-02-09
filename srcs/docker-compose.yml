@@ -1,4 +1,5 @@
 
+
 #services = 1 container:
         #port:
             #-HOST:CONTAINER
@@ -6,7 +7,14 @@
 # docker-compose config : pour détailler la config
 
 # version : specify the version of docker-compose. old version don't have some options.
-version: "3"
+version: "3.5"
+
+
+
+
+networks:
+    Inception:
+
 
 # VOLUME
 #   driver: specify local volume
@@ -15,12 +23,19 @@ version: "3"
 #       device = absolute_path of volume
 
 volumes:
-    fuck:
+    WordPress:
         driver: local
         driver_opts:
             o: bind
             type: volume
             device: /home/user42/42/inception/srcs/html
+
+    DB:
+        driver: local
+        driver_opts:
+            o: bind
+            type: volume
+            device: /home/user42/42/inception/srcs/db
 
 
 # list of all services : 
@@ -29,13 +44,21 @@ services:
 
     nginx:
         container_name: nginx
-        build: ./requirements/nginx/
+        build: 
+            context: ./requirements/nginx/
+            # args:
+            #     DOMAIN_NAME: ${DOMAIN_NAME}
         env_file: .env
+        extra_hosts:
+            - ${DOMAIN_NAME}:127.0.0.1
+            - test.test:127.0.0.1
         ports:
             - 443:443
         restart: on-failure
         volumes:
-            - fuck:/var/www/html
+            - WordPress:/var/www/html
+        networks:
+            - Inception
     
     
     # - ./html:/var/www/html
