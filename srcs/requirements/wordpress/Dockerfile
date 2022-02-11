@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:19:52 by lvirgini          #+#    #+#              #
-#    Updated: 2021/06/15 14:39:12 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/11 15:46:16 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,12 @@
 # lien VOLUME Wordpress
 # -------------------------------------------#
 
-FROM debian:buster
+FROM alpine:3.14
 
-RUN	apt-get -y update && apt-get -y upgrade && \
-	apt-get -y install wget
+RUN	apk update && apk upgrade
+RUN	apk add wget
 
-RUN	mkdir var/www/$(DOMAIN_NAME)
+RUN	mkdir -p /var/www/wordpress
 
 
 

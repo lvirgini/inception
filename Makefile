@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 11:17:08 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/09 22:51:25 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/11 16:13:48 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ all:	build run
 setup:
 		sudo bash ./starter.sh
 
-build: setup
+build:	setup
 		cd $(DIR) && docker-compose build
 		@echo "\n\033[36;1m\033[4;5mDOCKER BUILD : DONE\033[0m\n"
 
@@ -61,6 +61,9 @@ rmi:
 
 
 re: 	stop all
+
+clean:	stop
+		./cleaner.sh
 
 # build_old:	
 # 		docker-compose -f $(DOCKER_COMPOSE) build 

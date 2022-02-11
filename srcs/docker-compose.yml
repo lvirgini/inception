@@ -23,19 +23,19 @@ networks:
 #       device = absolute_path of volume
 
 volumes:
-    WordPress:
+    WordPress_volume:
         driver: local
         driver_opts:
             o: bind
             type: volume
-            device: /home/user42/42/inception/srcs/html
+            device: /home/user42/data/wordpress
 
-    DB:
+    db_volume:
         driver: local
         driver_opts:
             o: bind
             type: volume
-            device: /home/user42/42/inception/srcs/db
+            device: /home/user42/data/db
 
 
 # list of all services : 
@@ -44,43 +44,42 @@ services:
 
     nginx:
         container_name: nginx
-        build: 
-            context: ./requirements/nginx/
-            # args:
-            #     DOMAIN_NAME: ${DOMAIN_NAME}
+        build: ./requirements/nginx/
+        depends_on:
+            - wordpress
         env_file: .env
         extra_hosts:
             - ${DOMAIN_NAME}:127.0.0.1
-            - test.test:127.0.0.1
         ports:
             - 443:443
         restart: on-failure
         volumes:
-            - WordPress:/var/www/html
+            - WordPress_volume:/var/www/wordpress
         networks:
             - Inception
     
-    
-    # - ./html:/var/www/html
-     # - ./volume_test:/var/www/html
-        # test: echo $TEST
             
-    # wordpress:
-    #     container_name: wordpress
-    #     build: ./wordpress/
-    #     restart: on-failure
-    #     env_file: .env
+    wordpress:
+        container_name: wordpress
+        build: ./requirements/wordpress/
+        depends_on:
+            - mariadb
+        env_file: .env
+        restart: on-failure
+        volumes:
+            - WordPress_volume:/var/www/wordpress
+        networks:
+            - Inception
         
         
-    # mariadb:
-    #     container_name: mariadb
-    #     build: ./mariadb
-    #     restart: on-failure
-    #     env_file: .env
-    #     environment: 
-    #         - TEST=test
+    mariadb:
+        container_name: mariadb
+        build: ./requirements/mariadb
+        restart: on-failure
+        env_file: .env
+        volumes:
+            - db_volume:/var/lib/mysql
+        networks:
+            - Inception
 
-
-
-    # wordpress_db:
         

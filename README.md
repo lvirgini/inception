@@ -102,3 +102,10 @@ Volume for persisting data. A volume does not increase the size of the container
 * `docker volume create [NAME]` : create a volume
 * `docker volume ls` : list volume
 * `docker volume inspect [NAME]` : inspect volume. 
+
+## Alpine
+
+- openrc
+    - https://www.cyberciti.biz/faq/how-to-enable-and-start-services-on-alpine-linux/
+- mariadb : 
+    - https://wiki.alpinelinux.org/wiki/MariaDB

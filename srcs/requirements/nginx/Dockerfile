@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:18:40 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/11 13:07:42 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/11 15:46:32 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,12 +47,10 @@ RUN 	openssl req -x509 -nodes -days 1 -newkey rsa:2048 			\
 #	remove default nginx.conf and copy my nginx.conf
 
 COPY	./conf /tmp
-RUN 	mkdir /var/test
-RUN 	echo "COUCOU" >> /var/test/index.html
+RUN 	mkdir -p /var/www/wordpress
+RUN 	echo "COUCOU" >> /var/www/wordpress/index.html
 RUN    	mv /tmp/default.conf etc/nginx/http.d/default.conf
 
-# RUN 	mv /tmp/nginx.conf etc/nginx/								&& \
-	
 # restart nginx for update configuration
 # RUN 	nginx
 
