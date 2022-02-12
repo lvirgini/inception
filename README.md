@@ -109,3 +109,7 @@ Volume for persisting data. A volume does not increase the size of the container
     - https://www.cyberciti.biz/faq/how-to-enable-and-start-services-on-alpine-linux/
 - mariadb : 
     - https://wiki.alpinelinux.org/wiki/MariaDB
+
+
+## LEMP
+- https://tech.osteel.me/posts/docker-for-local-web-development-part-1-a-basic-lemp-stack
