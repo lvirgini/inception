@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 11:17:08 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/11 16:13:48 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/13 21:49:23 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ DOCKER_COMPOSE = $(DIR)$(NAME)
 all:	build run
 
 setup:
-		sudo bash ./starter.sh
+		bash ./starter.sh
 
 build:	setup
 		cd $(DIR) && docker-compose build
@@ -58,6 +58,7 @@ rm:
 
 rmi:
 		docker rmi -f $$(docker images -a -q)
+
 
 
 re: 	stop all

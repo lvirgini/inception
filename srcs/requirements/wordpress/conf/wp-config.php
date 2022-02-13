@@ -25,10 +25,10 @@
 define( 'DB_NAME', '$MSQL_DATABASE' );
 
 /** Utilisateur de la base de données MySQL. */
-define( 'DB_USER', 'wp_admin' );
+define( 'DB_USER', '$MYSQL_USER' );
 
 /** Mot de passe de la base de données MySQL. */
-define( 'DB_PASSWORD', 'password' );
+define( 'DB_PASSWORD', '$MYSQL_USER_PASSWORD' );
 
 /** Adresse de l’hébergement MySQL. */
 define( 'DB_HOST', '$DOMAIN_NAME' );

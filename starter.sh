@@ -14,6 +14,7 @@ then
 fi
 
 echo "setup volumes"
-mkdir -p /home/${USER}/data/wordpress
-mkdir -p /home/${USER}/data/db
+echo $USER
+mkdir -p "/home/$USER/data/wordpress"
+mkdir -p "/home/$USER/data/db"
 
