@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:18:40 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/14 12:17:47 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/14 22:54:14 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,15 +51,6 @@ COPY	./conf/wordpress.conf /etc/nginx/http.d/
 # Volume Path
 
 RUN 	mkdir -p /var/www/wordpress
-
-
-
-
-# RUN 	echo "COUCOU" >> /var/www/wordpress/index.html
-# RUN    	mv /tmp/default.conf etc/nginx/http.d/default.conf
-
-# restart nginx for update configuration
-# RUN 	nginx
 
 # -----------------
 #	Initialisation

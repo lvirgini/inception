@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 11:17:08 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/13 21:49:23 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/15 00:08:24 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,10 @@
 DIR		= srcs/
 NAME	= docker-compose.yml
 ENV		= $(DIR).env
+
+
+# set same ids for container user and host user
+UID_GIDOSEF		= $(shell id -u):$(shell id -g)
 
 DOCKER_COMPOSE = $(DIR)$(NAME)
 
@@ -31,13 +35,13 @@ setup:
 		bash ./starter.sh
 
 build:	setup
-		cd $(DIR) && docker-compose build
+		cd $(DIR) && UID_GID=$(UID_GIDOSEF) docker-compose build
 		@echo "\n\033[36;1m\033[4;5mDOCKER BUILD : DONE\033[0m\n"
 
 
 run:
+	cd $(DIR) && UID_GID=$(UID_GIDOSEF) docker-compose up -d
 
-	cd $(DIR) && docker-compose up -d
 
 
 config:
