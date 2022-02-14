@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:19:52 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/13 21:41:54 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/14 12:08:43 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,13 @@ FROM    alpine:3.14
 RUN	    apk update && apk upgrade
 RUN	    apk add wget php-fpm
 
-RUN	    mkdir -p /var/www/wordpress
+RUN	    mkdir -p /var/www/
 
 
 RUN     wget https://fr.wordpress.org/wordpress-5.9-fr_FR.tar.gz && \
-        tar -xzf wordpress-5.9-fr_FR.tar.gz -C /var/www/wordpress 
+        tar -xzf wordpress-5.9-fr_FR.tar.gz -C /var/www/
 
-RUN     touch /var/www/wordpress/pouet
+# RUN     touch /var/www/wordpress/pouet
     #   && \
     # rm /var/www/wordpress/wordpress-5.9-fr_FR.tar.gz
 
@@ -35,6 +35,7 @@ RUN     touch /var/www/wordpress/pouet
 
 COPY    conf/ /tmp/
 COPY    conf/wordpress.conf   /etc/nginx/http.d/ 
+COPY    conf/default.conf   /etc/nginx/http.d/ 
 # RUN     rm /etc/nginx/http.d/default.conf
 # RUN     mv /tmp/wordpress.conf /etc/nginx/sites-available/
 	# && \

@@ -69,7 +69,6 @@ services:
         build: ./requirements/wordpress/
         depends_on:
             - mariadb
-        # ports:
         env_file: .env
         restart: on-failure
         volumes:

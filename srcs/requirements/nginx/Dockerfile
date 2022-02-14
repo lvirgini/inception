@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:18:40 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/13 20:48:33 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/14 12:17:47 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 # -------------------------------------------#
 
 #  docker build -t inception_nginx .
-#  docker run -ti -p 443:443 inception_nginx bash
+#  docker run -ti -p 443:443 inception_nginx sh
 
 FROM alpine:3.14
 
@@ -44,10 +44,17 @@ RUN 	openssl req -x509 -nodes -days 1 -newkey rsa:2048 			\
 		openssl dhparam -out /etc/nginx/dhparam.pem 1024
 
 # NGINX:
-#	remove default nginx.conf and copy my nginx.conf
 
-COPY	./conf /tmp
+COPY	./conf/wordpress.conf /etc/nginx/http.d/
+
+
+# Volume Path
+
 RUN 	mkdir -p /var/www/wordpress
+
+
+
+
 # RUN 	echo "COUCOU" >> /var/www/wordpress/index.html
 # RUN    	mv /tmp/default.conf etc/nginx/http.d/default.conf
 
