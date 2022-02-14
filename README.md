@@ -73,6 +73,11 @@ docker-compose help
 ***
 ###  docker-compose.yml:
 https://docs.docker.com/compose/compose-file/compose-file-v3/
+- extra host : https://stackoverflow.com/questions/58170665/docker-compose-extra-hosts-from-env-file-and-not-from-default-env-file
+- volume :
+    - https://docs.docker.com/storage/volumes/
+    - https://blog.code4hire.com/2018/06/define-named-volume-with-host-mount-in-the-docker-compose-file/
+    - https://stackoverflow.com/questions/61071981/docker-compose-volumes-syntax-for-local-driver-to-mount-a-file
 * `version: "[NUMBER]"` : version of docker-compose
 * `services:` : declare behind all services
 * `volumes:` : declare behind all volumes
@@ -102,14 +107,29 @@ Volume for persisting data. A volume does not increase the size of the container
 * `docker volume create [NAME]` : create a volume
 * `docker volume ls` : list volume
 * `docker volume inspect [NAME]` : inspect volume. 
+- https://docs.docker.com/storage/bind-mounts/
+- https://docs.docker.com/compose/compose-file/compose-file-v3/#volume-configuration-reference
 
 ## Alpine
 
 - openrc
     - https://www.cyberciti.biz/faq/how-to-enable-and-start-services-on-alpine-linux/
+    - https://github.com/gliderlabs/docker-alpine/issues/437
+    - https://stackoverflow.com/questions/65627946/how-to-start-nginx-server-within-alpinelatest-image-using-rc-service-command
 - mariadb : 
     - https://wiki.alpinelinux.org/wiki/MariaDB
-
+    - https://www.librebyte.net/en/data-base/how-to-install-mariadb-on-alpine-linux/
+    - https://hub.docker.com/r/linuxserver/mariadb
+    - https://github.com/yobasystems/alpine-mariadb
+    - https://mariadb.com/kb/en/mysqld_safe/
+- php : 
+    - https://www.cyberciti.biz/faq/how-to-install-php-7-fpm-on-alpine-linux/
+- wordpress : 
+    - https://wiki.alpinelinux.org/wiki/WordPress
+- nginx :
+    - https://wiki.alpinelinux.org/wiki/Nginx
 
 ## LEMP
 - https://tech.osteel.me/posts/docker-for-local-web-development-part-1-a-basic-lemp-stack
+- https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-docker-compose
+- https://medium.com/swlh/wordpress-deployment-with-nginx-php-fpm-and-mariadb-using-docker-compose-55f59e5c1a
