@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 11:17:08 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/15 11:08:01 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/15 11:22:27 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ build:	setup
 
 
 run:
-	cd $(DIR) docker-compose up -d
+	cd $(DIR) && docker-compose up -d
 # cd $(DIR) && UID_GID="$$(id -u):$$(id -g)" docker-compose up -d
 # cd $(DIR) && docker-compose up -d
 # cd $(DIR) && UID_GID=$(UID) docker-compose up -d
