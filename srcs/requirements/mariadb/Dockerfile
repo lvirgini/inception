@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:19:31 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/13 22:04:00 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/15 00:34:53 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ RUN     /etc/init.d/mariadb setup
 # mysqld_safe is the recommended way to start mysqld on Linux and Unix distributions that do not support systemd
 # RUN mysqld_safe
 RUN mysqld_safe -e 	"CREATE DATABASE $MYSQL_DATABASE; \
-			GRANT ALL ON  $MYSQL_DATABASE.* TO '$MYSQL_ADMIN'@'$DOMAIN_NAME' IDENTIFIED BY '$MYSQL_ADMIN_PASSWORD' WITH GRANT OPTION;\
+			GRANT ALL ON  $MYSQL_DATABASE.* TO '$MYSQL_ROOT'@'$DOMAIN_NAME' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD' WITH GRANT OPTION;\
 			FLUSH PRIVILEGES;"
 # RUN echo	"configuration mysql DONE"
 

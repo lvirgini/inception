@@ -48,7 +48,6 @@ services:
     nginx:
         container_name: nginx
         image: nginx
-        user: ${UID_GID}
         build: ./requirements/nginx/
         depends_on:
             - wordpress
@@ -67,7 +66,6 @@ services:
     wordpress:
         container_name: wordpress
         image: wordpress
-        user: ${UID_GID}
         build: ./requirements/wordpress/
         depends_on:
             - mariadb
@@ -82,7 +80,6 @@ services:
     mariadb:
         container_name: mariadb
         image: mariadb
-        user: ${UID_GID}
         build: ./requirements/mariadb
         restart: on-failure
         env_file: .env
