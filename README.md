@@ -133,3 +133,8 @@ Volume for persisting data. A volume does not increase the size of the container
 - https://tech.osteel.me/posts/docker-for-local-web-development-part-1-a-basic-lemp-stack
 - https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-docker-compose
 - https://medium.com/swlh/wordpress-deployment-with-nginx-php-fpm-and-mariadb-using-docker-compose-55f59e5c1a
+
+## USER
+ - https://github.com/docker/compose/issues/4725
+ - https://stackoverflow.com/questions/40462189/docker-compose-set-user-and-group-on-mounted-volume
+ - https://stackoverflow.com/questions/56844746/how-to-set-uid-and-gid-in-docker-compose
