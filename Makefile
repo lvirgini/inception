@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 11:17:08 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/15 11:22:27 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/17 16:41:35 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,7 @@
 
 DIR		= srcs/
 NAME	= docker-compose.yml
-ENV		= $(DIR).env
 
-DOCKER_COMPOSE = $(DIR)$(NAME)
 
 # ----------------- #
 #	  FUNCTIONS		#
@@ -37,10 +35,6 @@ build:	setup
 
 run:
 	cd $(DIR) && docker-compose up -d
-# cd $(DIR) && UID_GID="$$(id -u):$$(id -g)" docker-compose up -d
-# cd $(DIR) && docker-compose up -d
-# cd $(DIR) && UID_GID=$(UID) docker-compose up -d
-# echo "$$(id -u):$$(id -g)"
 
 
 config:
@@ -60,11 +54,13 @@ rmi:
 		docker rmi -f $$(docker images -a -q)
 
 rm_volume:
-		./cleaner.sh
+		docker volume rm $$(docker volume ls)
+		./clean.sh
 
 re: 	stop all
 
 clean:	stop rmi rm_volume
 
 
-.PHONY: all build run bonus stop rm rmi re
+
+.PHONY: all setup build run stop rmi rm_volume re

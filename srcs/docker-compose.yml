@@ -81,6 +81,10 @@ services:
         container_name: mariadb
         image: mariadb
         build: ./requirements/mariadb
+        # depend_on:
+        #     -nginx
+        # ports:
+        #     - 3306:3306
         restart: on-failure
         env_file: .env
         volumes:
