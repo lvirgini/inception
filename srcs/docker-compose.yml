@@ -12,35 +12,6 @@ version: "3.5"
 
 
 
-networks:
-    Inception:
-        # name: Inception
-
-
-# VOLUME
-#   driver: specify local volume
-#   drivers_opts: option for mount volume (man mount)
-#       o: bind : lier/monter le volume d'un repertoire deja existant
-#       volume : 
-#       device = absolute_path of volume
-
-volumes:
-    WordPress_volume:
-        name: WordPress_volume
-        driver: local
-        driver_opts:
-            o: bind
-            type: bind
-            device: /home/user42/data/wordpress
-
-    db_volume:
-        name: db_volume
-        driver: local
-        driver_opts:
-            o: bind
-            type: volume
-            device: /home/user42/data/db
-
 
 # list of all services : 
 services:
@@ -49,7 +20,7 @@ services:
     mariadb:
         container_name: mariadb
         image: mariadb
-        build: ./requirements/mariadb
+        build: ./requirements/mariadb/
         restart: on-failure
         env_file: .env
         volumes:
@@ -89,4 +60,33 @@ services:
             - Inception
     
             
+
+
+# VOLUME
+#   driver: specify local volume
+#   drivers_opts: option for mount volume (man mount)
+#       o: bind : lier/monter le volume d'un repertoire deja existant
+#       volume : 
+#       device = absolute_path of volume
+
+volumes:
+    WordPress_volume:
+        name: WordPress_volume
+        driver: local
+        driver_opts:
+            o: bind
+            type: volume
+            device: /home/user42/data/wordpress
+
+    db_volume:
+        name: db_volume
+        driver: local
+        driver_opts:
+            o: bind
+            type: volume
+            device: /home/user42/data/db
         
+
+networks:
+    Inception:
+        # name: Inception

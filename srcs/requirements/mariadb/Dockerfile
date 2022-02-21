@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:19:31 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/21 13:58:58 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/21 22:58:15 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,16 +21,19 @@ FROM alpine:3.14
 RUN     apk update -q && apk -q upgrade 
 RUN		apk add --no-cache mariadb mariadb-client
 
-RUN     mkdir -p /var/lib/mysql /run/mysqld
+RUN     mkdir -p /var/lib/mysqld /run/mysqld
 
 # initializes the MariaDB data directory and creates the system tables in the mysql database
 	# - start  MariaDB Server's 
 	# run as root use --user option to indicate the user name that mysqld will run as.
 RUN 	mysql_install_db --user=mysql --datadir=/var/lib/mysql
-
+# RUN 	mysql_install_db --user=mysql --datadir=/var/lib/mysql --auth-root-authentication-method=normal
+RUN		chown -R mysql:mysql /var/lib/mysql /run/mysqld
 
 COPY 	conf/ /
-RUN		mv /mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
+RUN 	mv my.cnf /etc/my.cnf
+RUN		cp /mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
+# RUN		cp /mariadb-server.cnf /etc/my.cnf
 
 EXPOSE 3306
 

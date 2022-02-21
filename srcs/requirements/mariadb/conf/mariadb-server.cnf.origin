@@ -1,4 +1,4 @@
-
+/etc/my.cnf.d/mariadb-server.cnf 
 #
 # These groups are read by MariaDB server.
 # Use it for options that only the server (but not clients) should see
@@ -8,12 +8,7 @@
 
 # this is only for the mysqld standalone daemon
 [mysqld]
-skip-networking =   0
-bind-address    =   0.0.0.0
-port            =   3306
-socket          =   /var/run/mysqld/mysqld.sock
-datadir         =   /var/lib/mysql
-# user            =   mysql
+skip-networking
 
 # Galera-related settings
 [galera]
@@ -24,12 +19,10 @@ datadir         =   /var/lib/mysql
 #binlog_format=row
 #default_storage_engine=InnoDB
 #innodb_autoinc_lock_mode=2
-
 #
 # Allow server to accept connections on all interfaces.
 #
-
-
+#bind-address=0.0.0.0
 #
 # Optional setting
 #wsrep_slave_threads=1
@@ -47,3 +40,4 @@ datadir         =   /var/lib/mysql
 # If you use the same .cnf file for MariaDB of different versions,
 # use this group for options that older servers don't understand
 [mariadb-10.5]
+
