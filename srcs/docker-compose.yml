@@ -21,6 +21,7 @@ networks:
 #   driver: specify local volume
 #   drivers_opts: option for mount volume (man mount)
 #       o: bind : lier/monter le volume d'un repertoire deja existant
+#       volume : 
 #       device = absolute_path of volume
 
 volumes:
@@ -44,6 +45,31 @@ volumes:
 # list of all services : 
 services:
 
+        
+    mariadb:
+        container_name: mariadb
+        image: mariadb
+        build: ./requirements/mariadb
+        restart: on-failure
+        env_file: .env
+        volumes:
+            - db_volume:/var/lib/mysql
+        networks:
+            - Inception
+
+        
+    wordpress:
+        container_name: wordpress
+        image: wordpress
+        build: ./requirements/wordpress/
+        depends_on:
+            - mariadb
+        env_file: .env
+        restart: on-failure
+        volumes:
+            - WordPress_volume:/var/www/wordpress
+        networks:
+            - Inception
 
     nginx:
         container_name: nginx
@@ -63,33 +89,4 @@ services:
             - Inception
     
             
-    wordpress:
-        container_name: wordpress
-        image: wordpress
-        build: ./requirements/wordpress/
-        depends_on:
-            - mariadb
-        env_file: .env
-        restart: on-failure
-        volumes:
-            - WordPress_volume:/var/www/wordpress
-        networks:
-            - Inception
-        
-        
-    mariadb:
-        container_name: mariadb
-        image: mariadb
-        build: ./requirements/mariadb
-        # depend_on:
-        #     -nginx
-        # ports:
-        #     - 3306:3306
-        restart: on-failure
-        env_file: .env
-        volumes:
-            - db_volume:/var/lib/mysql
-        networks:
-            - Inception
-
         

@@ -117,6 +117,7 @@ Volume for persisting data. A volume does not increase the size of the container
     - https://github.com/gliderlabs/docker-alpine/issues/437
     - https://stackoverflow.com/questions/65627946/how-to-start-nginx-server-within-alpinelatest-image-using-rc-service-command
 - mariadb : 
+    - https://mariadb.com/kb/en/mysql_install_db/
     - https://wiki.alpinelinux.org/wiki/MariaDB
     - https://www.librebyte.net/en/data-base/how-to-install-mariadb-on-alpine-linux/
     - https://hub.docker.com/r/linuxserver/mariadb

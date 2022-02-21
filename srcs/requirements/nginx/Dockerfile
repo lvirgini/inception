@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:18:40 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/14 22:54:14 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/20 14:17:49 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ RUN 	mkdir -p /var/www/wordpress
 #	Initialisation
 # -----------------
 
+EXPOSE	443
+
 CMD	["nginx", "-g", "daemon off;"]
 
-EXPOSE	443
 

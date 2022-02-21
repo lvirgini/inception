@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 11:17:08 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/17 16:41:35 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/20 16:44:28 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,52 +15,54 @@
 # ----------------- #
 
 DIR		= srcs/
-NAME	= docker-compose.yml
-
+DOCKER_COMPOSE = cd $(DIR) && docker-compose
 
 # ----------------- #
 #	  FUNCTIONS		#
 # ----------------- #
 
 # service nginx stop
-all:	build run
+all:	build up
 
 setup:
 		bash ./starter.sh
 
 build:	setup
-		cd $(DIR) && docker-compose build
+		$(DOCKER_COMPOSE) build
 		@echo "\n\033[36;1m\033[4;5mDOCKER BUILD : DONE\033[0m\n"
 
+up:
+	$(DOCKER_COMPOSE) up -d
 
-run:
-	cd $(DIR) && docker-compose up -d
-
+down:	
+	$(DOCKER_COMPOSE) down
 
 config:
-	cd $(DIR) && docker-compose config
-
+	$(DOCKER_COMPOSE) config
 
 
 # ----------------- #
 # 		CLEAN		#
 # ----------------- #
 
-stop:
-		cd $(DIR) && docker-compose down
-
-
+rm:
+		docker rm -f $$(docker ps -a -q)
+		
 rmi:
 		docker rmi -f $$(docker images -a -q)
 
 rm_volume:
 		docker volume rm $$(docker volume ls)
-		./clean.sh
 
-re: 	stop all
+clean:
+	$(DOCKER_COMPOSE) down -v --rmi all --remove-orphans
 
-clean:	stop rmi rm_volume
+fclean: clean 
+		./cleaner.sh
+
+
+re: 	fclean all
 
 
 
-.PHONY: all setup build run stop rmi rm_volume re
+.PHONY: all setup build up down rm rmi rm_volume clean fclean re

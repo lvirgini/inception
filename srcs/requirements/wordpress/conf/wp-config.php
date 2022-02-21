@@ -20,18 +20,26 @@
  * @package WordPress
  */
 
+
+define( 'DB_COLLATE', '' );
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
 /** Nom de la base de données de WordPress. */
-define( 'DB_NAME', "$MSQL_DATABASE" );
+define( 'DB_NAME',  getenv('MYSQL_DATABASE') );
 
 /** Utilisateur de la base de données MySQL. */
-define( 'DB_USER', "$MYSQL_USER" );
+define( 'DB_USER', getenv('MYSQL_USER') );
 
 /** Mot de passe de la base de données MySQL. */
-define( 'DB_PASSWORD', "$MYSQL_USER_PASSWORD" );
+define( 'DB_PASSWORD', getenv('MYSQL_USER_PASSWORD') );
 
 /** Adresse de l’hébergement MySQL. */
-define( 'DB_HOST', "$DOMAIN_NAME" );
+// define( 'DB_HOST', 'mariadb' );
+// define( 'DB_HOST', '0.0.0.0:mariadb' );
+// define( 'DB_HOST', '127.0.0.1:3306' );
+// define( 'DB_HOST', 'localhost:3306' );
+// define( 'DB_HOST', 'localhost' );
+// define( 'DB_HOST', '0.0.0.0' );
+define( 'DB_HOST', '0.0.0.0:3306' );
 
 /** Jeu de caractères à utiliser par la base de données lors de la création des tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -53,14 +61,16 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'lZ!J}m#)R;K2wnd&@SuKwljT6RQ64^-+ikmoJe(!eN?7bRMC.9m0hNn,}|Pg%E~l');
-define('SECURE_AUTH_KEY',  ';bQ%A;+j-/OJ-*K,-<UDF(~Fs:YJNN9AX|-OH l{gkjK!V%ASqD|iI^65?!S[?ky');
-define('LOGGED_IN_KEY',    'zXdj[g{Q?~5ubF<.`<U/j~v~YKs6YYEYz%qA^UV]m)Ay`Jm^A^o]zk^Maz.*t@`c');
-define('NONCE_KEY',        'cYuc6ro+oB2G]+Gm%fr+4*5|9!yU/+&W`)WUix{}y!?c@(.+rZqf_]pWfMb?=+KR');
-define('AUTH_SALT',        'UNC~Umj=*x-9FgeXEBf]yGbUOp6hs_%d-J_7nO8>B1Cz1}lc+jwxo_Nt|BcIAG`|');
-define('SECURE_AUTH_SALT', 'RvEf|D#q`/<rX|1~1DT>V:+-/^Ko^<Kh7Gpn-y*b-2?2T+XCQ$);xMu)FADN<L$f');
-define('LOGGED_IN_SALT',   'NNaDc+SOA-nk?&ossN4YOW{jTQl}K GoCH6uEDSQbw]oGco}FQq0t.Fs=<XFmj|F');
-define('NONCE_SALT',       '7K.e=0|p^:hZZ TvGdmPj79h1e0}BDW&23[<Rr]wjf[~U]TK>u:5Qzlfb(#0{G>&');
+
+define('AUTH_KEY',         'uMH7YY3h8J{J`FdtFu P-<V a)*xw![)?I@_6}XUgEf?{c`;]q8:.S+&=T@zDKA$');
+define('SECURE_AUTH_KEY',  'myhK+-JJVC|8GOQ}Rc-4d|++kMc_qNoY99:I!ZJpx?LX)j+dpA1P}*O9c(ufGi)E');
+define('LOGGED_IN_KEY',    'RH76^pfsr:`EZ YdEsc)$tUx)ArC$8KXVPR!V2m;}VNCB9aWh|/e>:BN^ ~Y%2+i');
+define('NONCE_KEY',        'XjSr,EmjC(|)56|:*h~E!ze3G<E4q#~ftGK>x*v=dbK<M=[17]#&d{{Q4<|%7o G');
+define('AUTH_SALT',        '@8M,zr.U9_X`~6Lo@6gKod3hjQ8@G/MWej:v6+oOL]m0Hg`|u@%nEg;/-3MmL_jF');
+define('SECURE_AUTH_SALT', 'sfD4?+|n;G))TF&3js-V]6( v`<,4$l|g,Iz_Ge}.jfGm*F+m6c#v^N5RAby/tg:');
+define('LOGGED_IN_SALT',   'La F#<Z>+g^_Ven;pJ:GZ quh7D1PB-ya@E aE^9q|IzS-/;K-?=8f*v&DPyIQ z');
+define('NONCE_SALT',       'vSW?WBI_!uB+3X-!*y-Zp~|)G>HqFvZka $;zn;w H4zw)8oEuD+NP@4Lut*+hFJ');
+
 /**#@-*/
 
 /**
