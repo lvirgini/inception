@@ -59,8 +59,6 @@ services:
         networks:
             - Inception
     
-            
-
 
 # VOLUME
 #   driver: specify local volume
