@@ -9,10 +9,6 @@
 # version : specify the version of docker-compose. old version don't have some options.
 version: "3.5"
 
-
-
-
-
 # list of all services : 
 services:
 
@@ -28,7 +24,6 @@ services:
         networks:
             - Inception
 
-        
     wordpress:
         container_name: wordpress
         image: wordpress

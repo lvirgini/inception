@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:18:40 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/20 14:17:49 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/22 14:57:20 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@
 # lien avec VOLUME wordpress
 # -------------------------------------------#
 
-#  docker build -t inception_nginx .
 #  docker run -ti -p 443:443 inception_nginx sh
 
 FROM alpine:3.14

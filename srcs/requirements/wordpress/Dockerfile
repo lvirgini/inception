@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:19:52 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/21 23:27:33 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/22 14:24:39 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,20 @@
 
 FROM    alpine:3.14
 
+# -----------------
+#	Installation
+# -----------------
+
 RUN	apk update && apk upgrade
 RUN     apk add --no-cache wget php-fpm php-json php-mysqli php-curl php7-mbstring php-gd php-zlib
 
 # create parent repository
 RUN     mkdir -p /var/www/
+
+
+# -----------------
+#	Configuration
+# -----------------
 
 # get wordpress and install it into the volume place (var/www/wordpress)
 RUN     wget https://fr.wordpress.org/wordpress-5.9-fr_FR.tar.gz    && \
@@ -37,6 +46,9 @@ RUN     chown -R nobody:nobody /var/www/wordpress/ \
 # replace localhost listen by 0.0.0.0 : corresponding to the network
 RUN         sed -i "s/127.0.0.1/0.0.0.0/" /etc/php7/php-fpm.d/www.conf
 
+# -----------------
+#	Initialisation
+# -----------------
 
 EXPOSE  9000
 

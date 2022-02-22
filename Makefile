@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 11:17:08 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/20 16:44:28 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/22 14:04:42 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,14 @@
 #	  VARIABLES		#
 # ----------------- #
 
-DIR		= srcs/
-DOCKER_COMPOSE = cd $(DIR) && docker-compose
+DIR				= srcs/
+DOCKER_COMPOSE 	= cd $(DIR) && docker-compose
 
 # ----------------- #
 #	  FUNCTIONS		#
 # ----------------- #
 
-# service nginx stop
+# service nginx stop in vm
 all:	build up
 
 setup:
