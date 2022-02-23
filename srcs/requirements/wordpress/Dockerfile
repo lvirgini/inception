@@ -40,6 +40,8 @@ RUN     wget https://fr.wordpress.org/wordpress-5.9-fr_FR.tar.gz    && \
 
 # copy config for passing wordpress manual configuration
 COPY    conf/wp-config.php /var/www/wordpress/
+COPY    conf/www.conf /etc/php7/php-fpm.d/
+
 RUN     chown -R nobody:nobody /var/www/wordpress/ \
         && chmod -R 775 /var/www/wordpress/
 

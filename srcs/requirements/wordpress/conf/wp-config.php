@@ -22,17 +22,24 @@
 
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
 /** Nom de la base de données de WordPress. */
-define( 'DB_NAME', 'wordpress_db' );
-// define( 'DB_NAME', getenv('MYSQL_DATABASE') );
+// define( 'DB_NAME', "$MYSQL_DATABASE" );
+// define( 'DB_USER', "$MYSQL_USER");
+// define( 'DB_PASSWORD', "$MYSQL_USER_PASSWORD");
+
+define( 'DB_NAME', getenv('MYSQL_DATABASE') );
+define( 'DB_USER', getenv('MYSQL_USER') );
+define( 'DB_PASSWORD', getenv('MYSQL_USER_PASSWORD') );
 
 /** Utilisateur de la base de données MySQL. */
-define( 'DB_USER', 'user42' );
 
-/** Mot de passe de la base de données MySQL. */
-define( 'DB_PASSWORD', 'lvirgini42' );
+// /** Mot de passe de la base de données MySQL. */
+// define( 'DB_PASSWORD', getenv('MYSQL_USER_PASSWORD') );
+// define( 'DB_NAME', 'wordpress_db');
+// define( 'DB_PASSWORD', 'lvirgini42' );
+// define( 'DB_USER', 'virginie' );
 
 /** Adresse de l’hébergement MySQL. */
-define( 'DB_HOST', 'mariadb' );
+define( 'DB_HOST', 'mariadb');
 
 /** Jeu de caractères à utiliser par la base de données lors de la création des tables. */
 define( 'DB_CHARSET', 'utf8mb4' );

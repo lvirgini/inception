@@ -11,7 +11,7 @@ echo "setup domain_name : ${DOMAIN_NAME}"
 # if grep return 0 : find : we don't have to setup again
 if !(grep -q "$HOST_NAME" /etc/hosts)
 then
-    sudo echo "$HOST_NAME" >> /etc/hosts
+    sudo sh -c "echo $HOST_NAME >> /etc/hosts"
 fi
 
 echo "setup volumes in : $VOLUME_PATH/"
