@@ -1,18 +1,9 @@
-
-
-#services = 1 container:
-        #port:
-            #-HOST:CONTAINER
-
-# docker-compose config : pour détailler la config
-
 # version : specify the version of docker-compose. old version don't have some options.
 version: "3.5"
 
 # list of all services : 
 services:
 
-        
     mariadb:
         container_name: mariadb
         image: mariadb
@@ -55,11 +46,10 @@ services:
             - Inception
     
 
-# VOLUME
+# list of all volumes
 #   driver: specify local volume
 #   drivers_opts: option for mount volume (man mount)
 #       o: bind : lier/monter le volume d'un repertoire deja existant
-#       volume : 
 #       device = absolute_path of volume
 
 volumes:
@@ -78,8 +68,6 @@ volumes:
             o: bind
             type: volume
             device: /home/user42/data/db
-        
 
 networks:
     Inception:
-        # name: Inception
