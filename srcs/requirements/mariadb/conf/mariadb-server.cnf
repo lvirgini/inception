@@ -8,15 +8,16 @@
 
 # this is only for the mysqld standalone daemon
 [mysqld]
-skip-networking =   0
+# skip-networking =   0
 bind-address    =   0.0.0.0
 port            =   3306
 socket          =   /var/run/mysqld/mysqld.sock
 datadir         =   /var/lib/mysql
-# user            =   mysql
 
 # Galera-related settings
 [galera]
+bind-address    =   0.0.0.0
+port            =   3306
 # Mandatory settings
 #wsrep_on=ON
 #wsrep_provider=

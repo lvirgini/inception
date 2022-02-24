@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:19:52 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/22 14:24:39 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/24 13:53:02 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,19 +34,18 @@ RUN     mkdir -p /var/www/
 # -----------------
 
 # get wordpress and install it into the volume place (var/www/wordpress)
-RUN     wget https://fr.wordpress.org/wordpress-5.9-fr_FR.tar.gz    && \
-        tar -xzf wordpress-5.9-fr_FR.tar.gz -C /var/www/            && \
-        rm -rf wordpress-5.9-fr_FR.tar.gz
+RUN     wget https://fr.wordpress.org/wordpress-5.9.1-fr_FR.tar.gz    && \
+        tar -xzf wordpress-5.9.1-fr_FR.tar.gz -C /var/www/            && \
+        rm -rf wordpress-5.9.1-fr_FR.tar.gz
 
 # copy config for passing wordpress manual configuration
 COPY    conf/wp-config.php /var/www/wordpress/
+
+# replace php configuration (listen to 0.0.0.0:9000, using env)
 COPY    conf/www.conf /etc/php7/php-fpm.d/
 
 RUN     chown -R nobody:nobody /var/www/wordpress/ \
         && chmod -R 775 /var/www/wordpress/
-
-# replace localhost listen by 0.0.0.0 : corresponding to the network
-RUN         sed -i "s/127.0.0.1/0.0.0.0/" /etc/php7/php-fpm.d/www.conf
 
 # -----------------
 #	Initialisation

@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 11:17:08 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/22 14:04:42 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/23 19:53:30 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,12 +52,15 @@ rmi:
 		docker rmi -f $$(docker images -a -q)
 
 rm_volume:
-		docker volume rm $$(docker volume ls)
+		docker volume rm $$(docker volume ls -q)
+
+rm_network:
+		docker rm $$(docker network ls -q)
 
 clean:
 	$(DOCKER_COMPOSE) down -v --rmi all --remove-orphans
 
-fclean: clean 
+fclean: clean
 		./cleaner.sh
 
 
