@@ -6,11 +6,10 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:18:40 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/22 14:57:20 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/24 21:00:40 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# PORT 443
 # lien avec DOCKER wordpress/php port 9000
 # lien avec VOLUME wordpress
 # -------------------------------------------#

@@ -6,7 +6,7 @@
 #    By: lvirgini <lvirgini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/08 12:19:31 by lvirgini          #+#    #+#              #
-#    Updated: 2022/02/24 18:06:13 by lvirgini         ###   ########.fr        #
+#    Updated: 2022/02/24 21:09:44 by lvirgini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ RUN     chmod +x mariadb_setup.sh
     # start  MariaDB Server's 
     # run as root use --user option to indicate the user name that mysqld will run as.  
 RUN     mysql_install_db --user=mysql --datadir=/var/lib/mysql
-
 
 # -----------------
 #	Initialisation

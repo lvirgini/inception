@@ -17,11 +17,16 @@ mariadb -u root -e "FLUSH PRIVILEGES;"
 # change root password
 mariadb -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
 
-# inject wordpress database 
+# inject wordpress database only the first time to init tables.
 # installation already done for two users : admin and user
 # https://www.digitalocean.com/community/tutorials/how-to-migrate-a-mysql-database-between-two-servers
-mariadb -u root --password=$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE < ./wordpress_db.sql
+wp_tables=$(mariadb -u root --password=$MYSQL_ROOT_PASSWORD -e "USE $MYSQL_DATABASE; SHOW TABLES;")
+if ["$wp_tables" -eq ""]
+then
+    mariadb -u root --password=$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE < ./wordpress_db.sql
+fi
 
+# touch /.wordpress_setup   
 # restart service in alpine : kill and re-lanch
 pkill mariadb
 pkill mysqld
