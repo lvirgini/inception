@@ -15,7 +15,7 @@
 # ----------------- #
 
 DIR				= srcs/
-DOCKER_COMPOSE 	= cd $(DIR) && docker-compose
+DOCKER_COMPOSE 	= export LOGIN=lvirgini && cd $(DIR) && docker-compose
 
 # ----------------- #
 #	  FUNCTIONS		#

@@ -59,7 +59,7 @@ volumes:
         driver_opts:
             o: bind
             type: volume
-            device: /home/$USER/data/wordpress
+            device: "/home/$LOGIN/data/wordpress"
 
     db_volume:
         name: db_volume
@@ -67,7 +67,7 @@ volumes:
         driver_opts:
             o: bind
             type: volume
-            device: /home/$USER/data/db
+            device: "/home/$LOGIN/data/db"
 
 networks:
     Inception:

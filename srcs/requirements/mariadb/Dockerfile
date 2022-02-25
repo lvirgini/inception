@@ -21,7 +21,7 @@ FROM alpine:3.14
 # -----------------
 
 RUN     apk update -q && apk -q upgrade 
-RUN		apk add --no-cache mariadb mariadb-client openrc
+RUN		apk add --no-cache mariadb mariadb-client
 
 # -----------------
 #	Configuration
@@ -40,7 +40,7 @@ RUN     chmod +x mariadb_setup.sh
 # initializes the MariaDB data directory and creates the system tables in the mysql database
     # start  MariaDB Server's 
     # run as root use --user option to indicate the user name that mysqld will run as.  
-RUN     mysql_install_db --user=mysql --datadir=/var/lib/mysql
+RUN     mysql_install_db --datadir=/var/lib/mysql
 
 # -----------------
 #	Initialisation

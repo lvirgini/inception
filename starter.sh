@@ -1,11 +1,13 @@
 #!/bin/bash
 
+export LOGIN=lvirgini
+
 # get .env for DOMAIN_NAME
 source ./srcs/.env
 
 #  make HOSTNAME for add it in /hosts
 HOST_NAME="127.0.0.1 ${DOMAIN_NAME}"
-VOLUME_PATH="/home/$USER/data"
+VOLUME_PATH="/home/$LOGIN/data"
 
 
 echo "setup domain_name : ${DOMAIN_NAME}"
@@ -16,5 +18,5 @@ fi
 
 
 echo "setup volumes in : $VOLUME_PATH/"
-mkdir -p "$VOLUME_PATH/wordpress"
-mkdir -p "$VOLUME_PATH/db"
+sudo mkdir -p "$VOLUME_PATH/wordpress"
+sudo mkdir -p "$VOLUME_PATH/db"
