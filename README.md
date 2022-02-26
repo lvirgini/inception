@@ -125,6 +125,7 @@ Volume for persisting data. A volume does not increase the size of the container
     - https://mariadb.com/kb/en/mysqld_safe/
     - https://www.digitalocean.com/community/tutorials/- - -                            how-to-migrate-a-mysql-database-between-two-servers
     - https://stackoverflow.com/questions/5615717/- how-can-i-store-a-command-in-a-variable-in-a-shell-script
+    - https://stackoverflow.com/questions/12931991/mysql-what-does-stand-for-in-host-column-and-how-to-change-users-password
 - php :  
     - https://www.cyberciti.biz/faq/how-to-install-php-7-fpm-on-alpine-linux/
 - wordpress : 

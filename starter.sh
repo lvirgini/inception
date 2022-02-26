@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export LOGIN=lvirgini
-
 # get .env for DOMAIN_NAME
 source ./srcs/.env
 

@@ -8,8 +8,8 @@
 
 # create if no exist database and user with password in .env
 mariadb -u root -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;"
-mariadb -u root -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_USER_PASSWORD';"
-mariadb -u root -e "CREATE USER IF NOT EXISTS '$MYSQL_ADMIN'@'%' IDENTIFIED BY '$MYSQL_ADMIN_PASSWORD';"
+mariadb -u root -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'localhost' IDENTIFIED BY '$MYSQL_USER_PASSWORD';"
+mariadb -u root -e "CREATE USER IF NOT EXISTS '$MYSQL_ADMIN'@'localhost' IDENTIFIED BY '$MYSQL_ADMIN_PASSWORD';"
 mariadb -u root -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_USER_PASSWORD';"
 mariadb -u root -e "GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_ADMIN'@'%' IDENTIFIED BY '$MYSQL_ADMIN_PASSWORD';"
 mariadb -u root -e "FLUSH PRIVILEGES;"
@@ -26,10 +26,9 @@ then
     mariadb -u root --password=$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE < ./wordpress_db.sql
 fi
 
-# touch /.wordpress_setup   
 # restart service in alpine : kill and re-lanch
 pkill mariadb
 pkill mysqld
 
 # restart mysqld
-/usr/bin/mysqld -u root --skip-networking=off --skip-name-resolve
+/usr/bin/mysqld -u root --skip-networking=off
